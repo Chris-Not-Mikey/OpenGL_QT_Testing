@@ -1,27 +1,9 @@
-// Include GLEW
-#include <GL/glew.h>
-#include <OpenGL/gl3.h>
-
-// Include GLFW
-//#include <GLFW/glfw3.h>
-
-// Include GLM
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtx/euler_angles.hpp>
-
-
 // myglwidget.cpp
 
 #include <QtWidgets>
-//#include <QtOpenGL>
-#include <stdio.h>
+#include <QtOpenGL>
+
 #include "myglwidget.h"
-
-
-glm::mat4 MVP_grid, MVP_probe, Model_probe, Model_grid, Projection, View;
-
-int read_stl(std::string fname, GLfloat * &vertices, GLfloat * &colors);
 
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
@@ -85,39 +67,27 @@ void MyGLWidget::setZRotation(int angle)
 
 void MyGLWidget::initializeGL()
 {
-    glewInit();
-    GLuint myBufferID;
+    qglClearColor(Qt::black);
 
-    GLfloat verts[]{
-        +0.0f, +1.0f,
-        -1.0f, -1.0f,
-        +1.0f, -1.0f,
-    };
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glShadeModel(GL_SMOOTH);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
 
-    __glewGenBuffers(1, &myBufferID);
-    __glewBindBuffer(GL_ARRAY_BUFFER, myBufferID);
-    __glewBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
-    __glewEnableVertexAttribArray(0);
-    __glewVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-    //qglClearColor(Qt::black);
-
-    //glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_CULL_FACE);
-    //glShadeModel(GL_SMOOTH);
-    //glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);
-
-    //static GLfloat lightPosition[4] = { 0, 0, 10, 1.0 };
-    //glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+    static GLfloat lightPosition[4] = { 0, 0, 10, 1.0 };
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 }
 
 void MyGLWidget::paintGL()
 {
-
-   glViewport(0,0, width(), height());
-   glDrawArrays(GL_TRIANGLES, 0, 3);
-
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    glTranslatef(0.0, 0.0, -10.0);
+    glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
+    glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
+    glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
+    draw();
 }
 
 void MyGLWidget::resizeGL(int width, int height)
@@ -158,7 +128,38 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void MyGLWidget::draw()
 {
+    qglColor(Qt::red);
+    glBegin(GL_QUADS);
+        glNormal3f(0,0,-1);
+        glVertex3f(-1,-1,0);
+        glVertex3f(-1,1,0);
+        glVertex3f(1,1,0);
+        glVertex3f(1,-1,0);
 
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glNormal3f(0,-1,0.707);
+        glVertex3f(-1,-1,0);
+        glVertex3f(1,-1,0);
+        glVertex3f(0,0,1.2);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glNormal3f(1,0, 0.707);
+        glVertex3f(1,-1,0);
+        glVertex3f(1,1,0);
+        glVertex3f(0,0,1.2);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glNormal3f(0,1,0.707);
+        glVertex3f(1,1,0);
+        glVertex3f(-1,1,0);
+        glVertex3f(0,0,1.2);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glNormal3f(-1,0,0.707);
+        glVertex3f(-1,1,0);
+        glVertex3f(-1,-1,0);
+        glVertex3f(0,0,1.2);
+    glEnd();
 }
-    
     
