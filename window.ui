@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>291</width>
-    <height>345</height>
+    <width>369</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>xRot</string>
+        <string> x</string>
        </property>
       </widget>
      </item>
@@ -62,7 +62,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>yrot</string>
+        <string> y</string>
        </property>
       </widget>
      </item>
@@ -91,11 +91,18 @@
     </layout>
    </item>
    <item>
+    <widget class="QDial" name="rotZDial">
+     <property name="notchesVisible">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>zRot</string>
+        <string> z</string>
        </property>
       </widget>
      </item>
@@ -142,22 +149,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>rotXSlider</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>myGLWidget</receiver>
-   <slot>setXRotation(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>81</x>
-     <y>227</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>83</x>
-     <y>205</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>rotYSlider</sender>
    <signal>valueChanged(int)</signal>
    <receiver>myGLWidget</receiver>
@@ -186,6 +177,22 @@
     <hint type="destinationlabel">
      <x>227</x>
      <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rotXSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>myGLWidget</receiver>
+   <slot>setXRotation(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>83</x>
+     <y>205</y>
     </hint>
    </hints>
   </connection>
