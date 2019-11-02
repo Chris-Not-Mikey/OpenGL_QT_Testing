@@ -35,7 +35,7 @@ public:
     QDial *rotZDial;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
-    QSlider *rotZSlider;
+    QDial *rotZSlider;
 
     void setupUi(QWidget *Window)
     {
@@ -65,6 +65,7 @@ public:
         rotXSlider->setMaximum(360);
         rotXSlider->setSingleStep(16);
         rotXSlider->setPageStep(15);
+        rotXSlider->setNotchesVisible(true);
         //rotXSlider->setOrientation(Qt::Horizontal);
         //rotXSlider->setTickPosition(QSlider::TicksAbove);
         //rotXSlider->setTickInterval(15);
@@ -87,6 +88,7 @@ public:
         rotYSlider->setMaximum(360);
         rotYSlider->setSingleStep(16);
         rotYSlider->setPageStep(15);
+        rotYSlider->setNotchesVisible(true);
        // rotYSlider->setOrientation(Qt::Horizontal);
        // rotYSlider->setTickPosition(QSlider::TicksAbove);
        // rotYSlider->setTickInterval(15);
@@ -103,7 +105,7 @@ public:
         rotZDial->setSingleStep(16);
         rotZDial->setPageStep(15);
 
-        verticalLayout->addWidget(rotZDial);
+       // verticalLayout->addWidget(rotZDial);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
@@ -113,14 +115,15 @@ public:
 
         horizontalLayout_3->addWidget(label_3);
 
-        rotZSlider = new QSlider(Window);
+        rotZSlider = new QDial(Window);
         rotZSlider->setObjectName(QString::fromUtf8("rotZSlider"));
         rotZSlider->setMaximum(360);
         rotZSlider->setSingleStep(16);
         rotZSlider->setPageStep(15);
-        rotZSlider->setOrientation(Qt::Horizontal);
-        rotZSlider->setTickPosition(QSlider::TicksAbove);
-        rotZSlider->setTickInterval(15);
+        rotZSlider->setNotchesVisible(true);
+        //rotZSlider->setOrientation(Qt::Horizontal);
+       // rotZSlider->setTickPosition(QSlider::TicksAbove);
+       // rotZSlider->setTickInterval(15);
 
         horizontalLayout_3->addWidget(rotZSlider);
 
@@ -132,7 +135,7 @@ public:
         QObject::connect(rotYSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setYRotation(int)));
         QObject::connect(rotZSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setZRotation(int)));
         QObject::connect(rotXSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setXRotation(int)));
-        QObject::connect(rotZDial, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setZRotation(int)));
+       // QObject::connect(rotZDial, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setZRotation(int)));
 
         QMetaObject::connectSlotsByName(Window);
     } // setupUi
