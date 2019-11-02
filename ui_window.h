@@ -28,10 +28,10 @@ public:
     MyGLWidget *myGLWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QSlider *rotXSlider;
+    QDial *rotXSlider;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
-    QSlider *rotYSlider;
+    QDial *rotYSlider;
     QDial *rotZDial;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
@@ -60,14 +60,14 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        rotXSlider = new QSlider(Window);
+        rotXSlider = new QDial(Window);
         rotXSlider->setObjectName(QString::fromUtf8("rotXSlider"));
         rotXSlider->setMaximum(360);
         rotXSlider->setSingleStep(16);
         rotXSlider->setPageStep(15);
-        rotXSlider->setOrientation(Qt::Horizontal);
-        rotXSlider->setTickPosition(QSlider::TicksAbove);
-        rotXSlider->setTickInterval(15);
+        //rotXSlider->setOrientation(Qt::Horizontal);
+        //rotXSlider->setTickPosition(QSlider::TicksAbove);
+        //rotXSlider->setTickInterval(15);
 
         horizontalLayout->addWidget(rotXSlider);
 
@@ -82,14 +82,14 @@ public:
 
         horizontalLayout_2->addWidget(label_2);
 
-        rotYSlider = new QSlider(Window);
+        rotYSlider = new QDial(Window);
         rotYSlider->setObjectName(QString::fromUtf8("rotYSlider"));
         rotYSlider->setMaximum(360);
         rotYSlider->setSingleStep(16);
         rotYSlider->setPageStep(15);
-        rotYSlider->setOrientation(Qt::Horizontal);
-        rotYSlider->setTickPosition(QSlider::TicksAbove);
-        rotYSlider->setTickInterval(15);
+       // rotYSlider->setOrientation(Qt::Horizontal);
+       // rotYSlider->setTickPosition(QSlider::TicksAbove);
+       // rotYSlider->setTickInterval(15);
 
         horizontalLayout_2->addWidget(rotYSlider);
 
