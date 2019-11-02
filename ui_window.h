@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QDial>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QSlider>
@@ -31,6 +32,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QSlider *rotYSlider;
+    QDial *rotZDial;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
     QSlider *rotZSlider;
@@ -39,7 +41,7 @@ public:
     {
         if (Window->objectName().isEmpty())
             Window->setObjectName(QString::fromUtf8("Window"));
-        Window->resize(291, 345);
+        Window->resize(369, 515);
         verticalLayout = new QVBoxLayout(Window);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -94,6 +96,15 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        rotZDial = new QDial(Window);
+        rotZDial->setObjectName(QString::fromUtf8("rotZDial"));
+        rotZDial->setNotchesVisible(true);
+        rotZDial->setMaximum(360);
+        rotZDial->setSingleStep(16);
+        rotZDial->setPageStep(15);
+
+        verticalLayout->addWidget(rotZDial);
+
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -118,9 +129,10 @@ public:
 
 
         retranslateUi(Window);
-        QObject::connect(rotXSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setXRotation(int)));
         QObject::connect(rotYSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setYRotation(int)));
         QObject::connect(rotZSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setZRotation(int)));
+        QObject::connect(rotXSlider, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setXRotation(int)));
+        QObject::connect(rotZDial, SIGNAL(valueChanged(int)), myGLWidget, SLOT(setZRotation(int)));
 
         QMetaObject::connectSlotsByName(Window);
     } // setupUi
@@ -128,9 +140,9 @@ public:
     void retranslateUi(QWidget *Window)
     {
         Window->setWindowTitle(QCoreApplication::translate("Window", "Window", nullptr));
-        label->setText(QCoreApplication::translate("Window", "xRot", nullptr));
-        label_2->setText(QCoreApplication::translate("Window", "yrot", nullptr));
-        label_3->setText(QCoreApplication::translate("Window", "zRot", nullptr));
+        label->setText(QCoreApplication::translate("Window", " x", nullptr));
+        label_2->setText(QCoreApplication::translate("Window", " y", nullptr));
+        label_3->setText(QCoreApplication::translate("Window", " z", nullptr));
     } // retranslateUi
 
 };
