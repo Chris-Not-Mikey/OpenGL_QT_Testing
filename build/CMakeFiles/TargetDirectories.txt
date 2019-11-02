@@ -1,0 +1,4 @@
+/Users/chris/Downloads/MyOpenGL/build/CMakeFiles/rebuild_cache.dir
+/Users/chris/Downloads/MyOpenGL/build/CMakeFiles/edit_cache.dir
+/Users/chris/Downloads/MyOpenGL/build/CMakeFiles/mygl.dir
+/Users/chris/Downloads/MyOpenGL/build/CMakeFiles/mygl_autogen.dir
