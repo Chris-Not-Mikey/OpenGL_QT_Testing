@@ -8,6 +8,8 @@
 
 
 #include <OpenGL/gl3.h>
+#include <OpenGL/glu.h>
+#include <OpenGL/OpenGL.h>
 #include <GLUT/glut.h>
 
 // Include GLM
@@ -88,7 +90,9 @@ void MyGLWidget::setZRotation(int angle)
 void MyGLWidget::initializeGL()
 {
 
-    glutInitDisplayMode(GLUT_3_2_CORE_PROFILE | GLUT_RGBA | GLUT_DOUBLE);
+    
+
+    //glutInitDisplayMode(GLUT_3_2_CORE_PROFILE | GLUT_RGBA | GLUT_DOUBLE);
     qglClearColor(Qt::black);
 
     glEnable(GL_DEPTH_TEST);
@@ -147,8 +151,6 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 
     lastPos = event->pos();
 }
-
-
 
 
 
